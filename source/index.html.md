@@ -52,6 +52,8 @@ Alternatively, you can make any request and append an api_token parameter:
 
 `http://api.swcollectionsexplorer.org.uk/api/v1/sites?api_token=w0WlRHfwbbr4JUJygL`
 
+We recommend using the bearer token approach.
+
 <aside class="notice">
 You must replace <code>w0WlRHfwbbr4JUJygL</code> with your personal API key.
 </aside>
@@ -116,7 +118,7 @@ category | null | Limit results to this category slug
 per_page | 50 | The number of results per page (min 10, max 250)
 
 <aside class="success">
-Remember — all API requests must contain either an <code>api_token</code> parameter or a <code>Authorization</code> header.
+Remember — all API requests must contain either an <code>Authorization</code> header, or a <code>api_token</code> parameter.
 </aside>
 
 ## Get a Specific Object
