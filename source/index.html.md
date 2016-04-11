@@ -62,7 +62,7 @@ You must replace <code>w0WlRHfwbbr4JUJygL</code> with your personal API key.
 
 ```curl
 
-curl -X "GET" "http://swce.local/api/v1/objects" \
+curl -X "GET" "http://api.swcollectionsexplorer.org.uk/api/v1/objects" \
 	-H "Authorization: Bearer w0WlRHfwbbr4JUJygL"
 ```
 
@@ -74,7 +74,7 @@ curl -X "GET" "http://swce.local/api/v1/objects" \
   "per_page": 50,
   "current_page": 1,
   "last_page": 228,
-  "next_page_url": "http://swce.local/api/v1/objects?page=2",
+  "next_page_url": "http://api.swcollectionsexplorer.org.uk/api/v1/objects?page=2",
   "prev_page_url": null,
   "from": 1,
   "to": 50,
@@ -123,7 +123,7 @@ Remember — all API requests must contain either an <code>api_token</code> para
 
 ```curl
 
-curl -X "GET" "http://swce.local/api/v1/object/1" \
+curl -X "GET" "http://api.swcollectionsexplorer.org.uk/api/v1/object/1" \
 	-H "Authorization: Bearer w0WlRHfwbbr4JUJygL"
 ```
 
