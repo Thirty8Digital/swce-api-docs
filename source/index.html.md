@@ -1,14 +1,10 @@
 ---
-title: API Reference
+title: SWCE API Reference
 
 language_tabs:
-  - shell
-  - ruby
-  - python
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='http://api.swcollectionsexplorer.org.uk'>Sign Up for a Developer Key</a>
 
 includes:
   - errors
@@ -18,147 +14,151 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the SWCE API.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+The API is a (mostly) RESTful service, with authentication handled by API tokens sent as a header or parameter on every request.
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+This API documentation was created with [Slate](https://github.com/tripit/slate). You can send us pull request for any changes you think should be made to these docs over on [Github](https://github.com/Thirty8Digital/swce-api-docs)
+
+# API Endpoint
+
+The API endpoint is:
+
+`http://api.swcollectionsexplorer.org.uk/api/v1/`
+
+# Formats
+
+By default, the API returns everything in JSON. We recommend you consume this.
+
+XML is also available on every request if you prefer it, simply append ".xml" of your endpoint.
+
+# Rate Limiting
+
+You can make 60 requests to the API every 60 seconds.
+
+After this, you'll receive an `429 Too Many Requests` status.
+
+You can check your rate limit status by reading the `X-RateLimit-Limit` and `X-RateLimit-Remaining` headers returned on every request.
 
 # Authentication
 
-> To authorize, use this code:
+SWCE currently only offers API tokens to allow access to the API. You can register a new API token key at our [developer portal](http://api.swcollectionsexplorer.org.uk).
 
-```ruby
-require 'kittn'
+SWCE requires the API key to be included in all API requests to the server in a header that looks like the following:
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+`Authorization: Bearer w0WlRHfwbbr4JUJygL`
 
-```python
-import kittn
+Alternatively, you can make any request and append an api_token parameter:
 
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`http://api.swcollectionsexplorer.org.uk/api/v1/sites?api_token=w0WlRHfwbbr4JUJygL`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>w0WlRHfwbbr4JUJygL</code> with your personal API key.
 </aside>
 
-# Kittens
+# Objects
 
-## Get All Kittens
+## Get All Objects
 
-```ruby
-require 'kittn'
+```curl
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl -X "GET" "http://swce.local/api/v1/objects" \
+	-H "Authorization: Bearer w0WlRHfwbbr4JUJygL"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "total": 11379,
+  "per_page": 50,
+  "current_page": 1,
+  "last_page": 228,
+  "next_page_url": "http://swce.local/api/v1/objects?page=2",
+  "prev_page_url": null,
+  "from": 1,
+  "to": 50,
+  "data": [
+    {
+      "id": 1,
+      "accession-loan-no": "71/1929",
+      "simple-name": "door",
+      "full-name": null,
+      "collector-excavator": null,
+      "collection-country": "England",
+      ...
+      "site": {
+        "name": "RAMM"
+      },
+      "category": {
+        "name": "Antiquities",
+        "slug": "antiquities"
+      }
+    },
+    ...
+  ]
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint retrieves all kittens.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET objects`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+site | null | Limit results to only one site ID
+since | null | Only return objects modified since this timestamp (2016-04-10 18:00:00 format)
+category | null | Limit results to this category slug
+per_page | 50 | The number of results per page (min 10, max 250)
+
+<aside class="success">
+Remember — all API requests must contain either an <code>api_token</code> parameter or a <code>Authorization</code> header.
+</aside>
+
+## Get a Specific Object
+
+```curl
+
+curl -X "GET" "http://swce.local/api/v1/object/1" \
+	-H "Authorization: Bearer w0WlRHfwbbr4JUJygL"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 1,
+  "accession-loan-no": "160/1999",
+  "simple-name": "architectural fragment",
+  "full-name": "label stop",
+  "collector-excavator": "Pearce, Nan, Mrs",
+  "collection-country": "England",
+  "description": "This architectural fragment is shaped as a queenâs head with curly hair. It was salvaged from a demolished house in Membury, Devon, where it had been used in a 20th century fireplace. It was probably once part of the local church.",
+  "mint": null,
+  "medium": null,
+  "geology-period": null,
+  "common-name": "label stop",
+  "family": null,
+  ...
+  "site": {
+    "name": "RAMM"
+  },
+  "category": {
+    "name": "Antiquities",
+    "slug": "antiquities"
+  }
+}
+```
+
+This endpoint retrieves a specific object.
+
+### HTTP Request
+
+`GET object/<ID>`
 
 ### URL Parameters
 
