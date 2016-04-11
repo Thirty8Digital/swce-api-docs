@@ -100,7 +100,7 @@ curl -X "GET" "http://swce.local/api/v1/objects" \
 }
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all objects.
 
 ### HTTP Request
 
@@ -164,5 +164,5 @@ This endpoint retrieves a specific object.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+ID | The ID of the object to retrieve
 
