@@ -28,9 +28,9 @@ The API endpoint is:
 
 # Formats
 
-By default, the API returns everything in JSON. We recommend you consume this.
+By default, the API returns everything in JSON. We recommend you consume this, and provide an `Accept: application/json` header with each call, although you will receive json without it.
 
-XML is also available on every request if you prefer it, simply append ".xml" of your endpoint.
+XML is also available on every request if you prefer it, just send us an `Accept: application/xml` header.
 
 # Rate Limiting
 
