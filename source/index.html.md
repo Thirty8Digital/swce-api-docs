@@ -18,7 +18,7 @@ Welcome to the SWCE API.
 
 The API is a (mostly) RESTful service, with authentication handled by API tokens sent as a header or parameter on every request.
 
-This API documentation was created with [Slate](https://github.com/tripit/slate). You can send us pull request for any changes you think should be made to these docs over on [Github](https://github.com/Thirty8Digital/swce-api-docs)
+You can send us pull request for any changes you think should be made to these docs over on [Github](https://github.com/Thirty8Digital/swce-api-docs)
 
 # API Endpoint
 
