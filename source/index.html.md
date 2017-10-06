@@ -4,7 +4,7 @@ title: SWCE API Reference
 language_tabs:
 
 toc_footers:
-  - <a href='http://api.swcollectionsexplorer.org.uk'>Sign Up for a Developer Key</a>
+  - <a href='https://api.swcollectionsexplorer.org.uk'>Sign Up for a Developer Key</a>
 
 includes:
   - errors
@@ -24,7 +24,7 @@ You can send us pull request for any changes you think should be made to these d
 
 The API endpoint is:
 
-`http://api.swcollectionsexplorer.org.uk/api/v1/`
+`https://api.swcollectionsexplorer.org.uk/api/v1/`
 
 # Formats
 
@@ -42,7 +42,7 @@ You can check your rate limit status by reading the `X-RateLimit-Limit` and `X-R
 
 # Authentication
 
-SWCE currently only offers API tokens to allow access to the API. You can register a new API token key at our [developer portal](http://api.swcollectionsexplorer.org.uk).
+SWCE currently only offers API tokens to allow access to the API. You can register a new API token key at our [developer portal](https://api.swcollectionsexplorer.org.uk).
 
 SWCE requires the API key to be included in all API requests to the server in a header that looks like the following:
 
@@ -50,7 +50,7 @@ SWCE requires the API key to be included in all API requests to the server in a 
 
 Alternatively, you can make any request and append an api_token parameter:
 
-`http://api.swcollectionsexplorer.org.uk/api/v1/sites?api_token=w0WlRHfwbbr4JUJygL`
+`https://api.swcollectionsexplorer.org.uk/api/v1/sites?api_token=w0WlRHfwbbr4JUJygL`
 
 We recommend using the bearer token approach.
 
@@ -64,7 +64,7 @@ You must replace <code>w0WlRHfwbbr4JUJygL</code> with your personal API key.
 
 ```curl
 
-curl -X "GET" "http://api.swcollectionsexplorer.org.uk/api/v1/objects" \
+curl -X "GET" "https://api.swcollectionsexplorer.org.uk/api/v1/objects" \
 	-H "Authorization: Bearer w0WlRHfwbbr4JUJygL"
 ```
 
@@ -76,7 +76,7 @@ curl -X "GET" "http://api.swcollectionsexplorer.org.uk/api/v1/objects" \
   "per_page": 50,
   "current_page": 1,
   "last_page": 228,
-  "next_page_url": "http://api.swcollectionsexplorer.org.uk/api/v1/objects?page=2",
+  "next_page_url": "https://api.swcollectionsexplorer.org.uk/api/v1/objects?page=2",
   "prev_page_url": null,
   "from": 1,
   "to": 50,
@@ -125,7 +125,7 @@ Remember — all API requests must contain either an <code>Authorization</code> 
 
 ```curl
 
-curl -X "GET" "http://api.swcollectionsexplorer.org.uk/api/v1/object/1" \
+curl -X "GET" "https://api.swcollectionsexplorer.org.uk/api/v1/object/1" \
 	-H "Authorization: Bearer w0WlRHfwbbr4JUJygL"
 ```
 
